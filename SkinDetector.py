@@ -8,8 +8,10 @@ while 1:
     U_limit = np.array([140, 100, 100])
     b_mask = cv2.inRange(into_hsv, L_limit, U_limit)
     blue = cv2.bitwise_and(frame, frame, mask=b_mask)
+    python = cv2.imread("Python.png")
     cv2.imshow('Original', frame)
     cv2.imshow('Skin Detector', blue)
+    cv2.imshow('Together:',np.concatenate((blue,python),axis=1))
     if cv2.waitKey(1) == 27:
         break
 cap.release()
